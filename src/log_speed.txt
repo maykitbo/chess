@@ -1,0 +1,152 @@
+
+depth = 1  //  move index = 619        //  time = 0.001229   //  one iter time = 1.98546e-06           <----  new piecec in all chessboards; listPiece<piece> E2-E3
+depth = 2  //  move index = 13899      //  time = 0.02285    //  one iter time = 1.644e-06             <----  new piecec in all chessboards; listPiece<piece> E2-E3
+depth = 3  //  move index = 213429     //  time = 0.226484   //  one iter time = 1.06117e-06           <----  new piecec in all chessboards; listPiece<piece> E2-E3
+depth = 4  //  move index = 2711238    //  time = 1.86803    //  one iter time = 6.88993e-07           <----  new piecec in all chessboards; listPiece<piece> E2-E3
+depth = 5  //  move index = 41518466   //  time = 25.2835    //  one iter time = 6.08971e-07           <----  new piecec in all chessboards; listPiece<piece> E2-E3
+depth = 1  //  move index = 619        //  time = 0.001145   //  one iter time = 1.84976e-06           <----  ^ - arreys of squereds E2-E3
+depth = 2  //  move index = 13899      //  time = 0.025953   //  one iter time = 1.86726e-06           <----  ^ - arreys of squereds E2-E3
+depth = 3  //  move index = 213429     //  time = 0.258931   //  one iter time = 1.2132e-06            <----  ^ - arreys of squereds E2-E3
+depth = 4  //  move index = 2711238    //  time = 2.42246    //  one iter time = 8.93487e-07           <----  ^ - arreys of squereds E2-E3
+depth = 5  //  move index = 41518466   //  time = 28.3994    //  one iter time = 6.84018e-07           <----  ^ - arreys of squereds E2-E3
+depth = 5  //  move index = 41518466   //  time = 25.06      //  one iter time = 6.03588e-07           <----  ^ - arreys of squereds E2-E3
+depth = 5  //  move index = 41518466   //  time = 24.0038    //  one iter time = 5.78147e-07           <----  ^ - arreys of squereds E2-E3
+depth = 5  //  move index = 41518466   //  time = 25.2956    //  one iter time = 6.09261e-07           <----  ^ - arreys of squereds in class E2-E3
+depth = 5  //  move index = 41518466   //  time = 25.0837    //  one iter time = 6.04158e-07           <----  ^ - arreys of squereds global E2-E3
+depth = 1  //  move index = 619        //  time = 0.00041    //  one iter time = 6.62359e-07           <----  only one new piece in new board E2-E3
+depth = 2  //  move index = 13899      //  time = 0.014594   //  one iter time = 1.05e-06              <----  only one new piece in new board E2-E3
+depth = 3  //  move index = 423238     //  time = 0.299146   //  one iter time = 7.06803e-07           <----  only one new piece in new board E2-E3
+depth = 4  //  move index = 10512774   //  time = 5.81874    //  one iter time = 5.53492e-07           <----  only one new piece in new board E2-E3
+depth = 4  //  move index = 10512774   //  time = 5.9082     //  one iter time = 5.62002e-07           <----  only one new piece in new board E2-E3
+depth = 4  //  move index = 2709728    //  time = 1.54354    //  one iter time = 5.69628e-07           <----  only one new piece in new board E2-E3
+depth = 4  //  move index = 2709728    //  time = 1.59415    //  one iter time = 5.88306e-07           <----  only one new piece in new board E2-E3
+depth = 5  //  move index = 41567875   //  time = 21.5737    //  one iter time = 5.18998e-07           <----  only one new piece in new board E2-E3
+depth = 5  //  move index = 41567875   //  time = 22.035     //  one iter time = 5.30096e-07           <----  only one new piece in new board E2-E3
+depth = 4  //  move index = 2709728    //  time = 1.65227    //  one iter time = 6.09755e-07           <----  only one new piece in new board E2-E3
+depth = 4  //  move index = 2709728    //  time = 1.53736    //  one iter time = 5.6735e-07            <----  only one new piece in new board E2-E3
+depth = 4  //  move index = 5012773    //  time = 2.74118    //  one iter time = 5.46839e-07           <----  ret.size() - (ret.size() / 3) E2-E3
+depth = 4  //  move index = 9073685    //  time = 4.85076    //  one iter time = 5.34596e-07           <----  ret.size() - (ret.size() / 3) E2-E3
+depth = 3  //  move index = 291254     //  time = 0.259871   //  one iter time = 8.92249e-07           <----  ret.size() - (ret.size() / 3) E2-E3
+depth = 3  //  move index = 291254     //  time = 0.330027   //  one iter time = 1.13312e-06           <----  ret.size() - (ret.size() / 3) E2-E3
+depth = 4  //  move index = 5012748    //  time = 3.18715    //  one iter time = 6.35809e-07           <----  ret.size() - (ret.size() / 3) E2-E3
+depth = 4  //  move index = 5012748    //  time = 3.36258    //  one iter time = 6.70805e-07           <----  ret.size() - (ret.size() / 3) E2-E3
+depth = 3  //  move index = 291254     //  time = 0.249431   //  one iter time = 8.56404e-07           <----  int8_t E2-E3
+depth = 3  //  move index = 291254     //  time = 0.257383   //  one iter time = 8.83706e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 5012748    //  time = 3.13759    //  one iter time = 6.25922e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 5012748    //  time = 3.20067    //  one iter time = 6.38505e-07           <----  int8_t E2-E3
+depth = 5  //  move index = 106901157  //  time = 60.618     //  one iter time = 5.67047e-07           <----  int8_t E2-E3
+depth = 5  //  move index = 106901157  //  time = 60.9189    //  one iter time = 5.69862e-07           <----  int8_t E2-E3
+depth = 5  //  move index = 106901157  //  time = 60.8905    //  one iter time = 5.69596e-07           <----  int8_t E2-E3
+depth = 5  //  move index = 95505775   //  time = 55.4713    //  one iter time = 5.80817e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 4908364    //  time = 3.00392    //  one iter time = 6.12001e-07           <----  color bool E2-E3
+depth = 3  //  move index = 261015     //  time = 0.249326   //  one iter time = 9.55217e-07           <----  color bool E2-E3
+depth = 2  //  move index = 14038      //  time = 0.018656   //  one iter time = 1.32896e-06           <----  color bool E2-E3
+depth = 3  //  move index = 284854     //  time = 0.29865    //  one iter time = 1.04843e-06           <----  color bool E2-E3
+depth = 3  //  move index = 292805     //  time = 0.267178   //  one iter time = 9.12478e-07           <----  color bool E2-E3
+depth = 5  //  move index = 110743615  //  time = 65.808     //  one iter time = 5.94237e-07           <----  color bool E2-E3
+depth = 5  //  move index = 110743615  //  time = 65.7509    //  one iter time = 5.93722e-07           <----  color bool E2-E3
+depth = 4  //  move index = 6011886    //  time = 3.96181    //  one iter time = 6.58996e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 5012748    //  time = 3.10034    //  one iter time = 6.1849e-07            <----  int8_t E2-E3
+depth = 4  //  move index = 5038868    //  time = 3.24978    //  one iter time = 6.44942e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 6964824    //  time = 4.38166    //  one iter time = 6.29112e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 18721528   //  time = 10.4322    //  one iter time = 5.57232e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 36741074   //  time = 19.6322    //  one iter time = 5.3434e-07            <----  int8_t E2-E3
+depth = 4  //  move index = 29138952   //  time = 16.1596    //  one iter time = 5.5457e-07            <----  int8_t E2-E3
+depth = 4  //  move index = 18809664   //  time = 10.123     //  one iter time = 5.38178e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 26869828   //  time = 14.5347    //  one iter time = 5.4093e-07            <----  int8_t E2-E3
+depth = 4  //  move index = 36584007   //  time = 19.0781    //  one iter time = 5.21486e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 18599924   //  time = 9.81338    //  one iter time = 5.27603e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 17382376   //  time = 9.33862    //  one iter time = 5.37247e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 15078393   //  time = 8.21779    //  one iter time = 5.45004e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 9206598    //  time = 5.17649    //  one iter time = 5.62259e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 17372125   //  time = 9.30901    //  one iter time = 5.35859e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 25504845   //  time = 13.0361    //  one iter time = 5.11124e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 18518440   //  time = 9.54551    //  one iter time = 5.1546e-07            <----  int8_t E2-E3
+depth = 4  //  move index = 21250539   //  time = 11.162     //  one iter time = 5.25259e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 16190666   //  time = 8.43166    //  one iter time = 5.20773e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 12583692   //  time = 6.60867    //  one iter time = 5.25178e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 12746931   //  time = 6.66457    //  one iter time = 5.22837e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 14205432   //  time = 7.42983    //  one iter time = 5.23027e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 11285368   //  time = 6.01656    //  one iter time = 5.33129e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 10824026   //  time = 5.80778    //  one iter time = 5.36563e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 8815534    //  time = 5.39622    //  one iter time = 6.12126e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 6354307    //  time = 3.52327    //  one iter time = 5.54469e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 3627809    //  time = 2.06298    //  one iter time = 5.68656e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 5820110    //  time = 3.17538    //  one iter time = 5.45587e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 3629209    //  time = 2.31455    //  one iter time = 6.37756e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 3864180    //  time = 2.22045    //  one iter time = 5.74623e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 4418368    //  time = 2.52755    //  one iter time = 5.72056e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 2858704    //  time = 1.54775    //  one iter time = 5.41417e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 5012748    //  time = 3.35329    //  one iter time = 6.68952e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 5635817    //  time = 3.75607    //  one iter time = 6.66463e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 13042115   //  time = 7.72218    //  one iter time = 5.92096e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 5012748    //  time = 3.34603    //  one iter time = 6.67505e-07           <----  int8_t E2-E3
+depth = 4  //  move index = 5015428    //  time = 2.44846    //  one iter time = 4.88185e-07           <----  NO list E2-E3
+depth = 6  //  move index = 17039      //  time = 0.03163    //  one iter time = 1.85633e-06           <----  depth connect with move value E2-E3
+depth = 6  //  move index = 121624     //  time = 0.17315    //  one iter time = 1.42365e-06           <----  depth connect with move value E2-E3
+depth = 6  //  move index = 339528     //  time = 0.28605    //  one iter time = 8.42493e-07           <----  depth connect with move value E2-E3
+depth = 6  //  move index = 242293     //  time = 0.239138   //  one iter time = 9.86979e-07           <----  depth connect with move value E2-E3
+depth = 6  //  move index = 1010372    //  time = 0.667928   //  one iter time = 6.61071e-07           <----  depth connect with move value E2-E3
+depth = 6  //  move index = 404988     //  time = 0.332245   //  one iter time = 8.20382e-07           <----  depth connect with move value E2-E3
+depth = 6  //  move index = 82689      //  time = 0.137206   //  one iter time = 1.6593e-06            <----  depth connect with move value E2-E3
+depth = 6  //  move index = 90250      //  time = 0.147395   //  one iter time = 1.63319e-06           <----  depth connect with move value E2-E3
+depth = 6  //  move index = 1210870    //  time = 0.771081   //  one iter time = 6.36799e-07           <----  depth connect with move value E2-E3
+depth = 6  //  move index = 375906     //  time = 0.297458   //  one iter time = 7.9131e-07            <----  depth connect with move value E2-E3
+depth = 6  //  move index = 2966034    //  time = 1.66828    //  one iter time = 5.6246e-07            <----  depth connect with move value E2-E3
+depth = 8  //  move index = 965819     //  time = 0.738958   //  one iter time = 7.6511e-07            <----  depth connect with move value E2-E3
+depth = 8  //  move index = 13136778   //  time = 7.61092    //  one iter time = 5.7936e-07            <----  depth connect with move value E2-E3
+depth = 8  //  move index = 46886850   //  time = 26.3949    //  one iter time = 5.62948e-07           <----  depth connect with move value E2-E3
+depth = 8  //  move index = 166917505  //  time = 87.3295    //  one iter time = 5.23189e-07           <----  depth connect with move value E2-E3
+depth = 3/5  //  move index = 40         //  time = 0.724112   //  one iter time = 0.0181028             <----  without move index E2-E3
+depth = 3/6  //  move index = 40         //  time = 0.700722   //  one iter time = 0.0175181             <----  without move index E2-E3
+depth = 4/7  //  move index = 40         //  time = 15.4306    //  one iter time = 0.385764              <----  without move index E2-E3
+depth = 7/3  //  move index = 40         //  time = 20.7802    //  one iter time = 0.519506              <----  without move index E2-E3
+depth = 7/3  //  move index = 40         //  time = 20.6404    //  one iter time = 0.51601               <----  without move index E2-E3
+depth = 7/3  //  move index = 41926147   //  time = 20.6249    //  one iter time = 4.91934e-07           <----  without move index E2-E3
+depth = 7/3  //  move index = 41926147   //  time = 20.6007    //  one iter time = 4.91356e-07           <----  without move index E2-E3
+depth = 7/3  //  move index = 41926147   //  time = 20.5606    //  one iter time = 4.90401e-07           <----  without move index E2-E3
+depth = 7/3  //  move index = 41926147   //  time = 20.616     //  one iter time = 4.91721e-07           <----  without move index E2-E3
+depth = 7/3  //  move index = 41926147   //  time = 20.6909    //  one iter time = 4.93508e-07           <----  without move index E2-E3
+depth = 7/3  //  move index = 41926147   //  time = 20.6353    //  one iter time = 4.92182e-07           <----  without move index E2-E3
+depth = 7/3  //  move index = 41926147   //  time = 20.5786    //  one iter time = 4.90831e-07           <----  without move index E2-E3
+depth = 7/3  //  move index = 41926147   //  time = 20.5261    //  one iter time = 4.89578e-07           <----  without move index E2-E3
+depth = 7/3  //  move index = 43171450   //  time = 62.7766    //  one iter time = 1.45412e-06           <----  with move index E2-E3
+depth = 7/3  //  move index = 42423298   //  time = 61.8459    //  one iter time = 1.45783e-06           <----  with move index E2-E3
+depth = 7/3  //  move index = 41896141   //  time = 21.6589    //  one iter time = 5.16966e-07           <----  bool Pmove E2-E3
+depth = 7/3  //  move index = 41896141   //  time = 21.201     //  one iter time = 5.06037e-07           <----  bool Pmove E2-E3
+depth = 7/3  //  move index = 40951930   //  time = 27.2038    //  one iter time = 6.64286e-07           <----  try catch throw E2-E3
+depth = 7/3  //  move index = 41926147   //  time = 23.5204    //  one iter time = 5.60996e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 7/3  //  move index = 41926147   //  time = 22.6919    //  one iter time = 5.41236e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 7/3  //  move index = 40987657   //  time = 22.4073    //  one iter time = 5.46685e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/2  //  move index = 990464     //  time = 0.359126   //  one iter time = 3.62584e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/2  //  move index = 1375518    //  time = 0.448978   //  one iter time = 3.26406e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/2  //  move index = 990464     //  time = 0.359177   //  one iter time = 3.62635e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/2  //  move index = 1342692    //  time = 0.461462   //  one iter time = 3.43684e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/2  //  move index = 990464     //  time = 0.354299   //  one iter time = 3.5771e-07            <----  return CHECKMATE with one iter E2-E3
+depth = 5/2  //  move index = 990464     //  time = 0.357277   //  one iter time = 3.60717e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/2  //  move index = 990464     //  time = 0.362563   //  one iter time = 3.66054e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/2  //  move index = 1342692    //  time = 0.495379   //  one iter time = 3.68945e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/2  //  move index = 990464     //  time = 0.36089    //  one iter time = 3.64365e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 16850200   //  time = 3.70275    //  one iter time = 2.19745e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 78421952   //  time = 16.3649    //  one iter time = 2.08678e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 174800083  //  time = 34.697     //  one iter time = 1.98495e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 94975560   //  time = 19.5369    //  one iter time = 2.05704e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 87995423   //  time = 17.5669    //  one iter time = 1.99634e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 189765209  //  time = 34.7126    //  one iter time = 1.82924e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 423908584  //  time = 75.0283    //  one iter time = 1.76992e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 346164168  //  time = 61.6645    //  one iter time = 1.78137e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 357410372  //  time = 63.1371    //  one iter time = 1.76652e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 451866952  //  time = 78.0862    //  one iter time = 1.72808e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 929654743  //  time = 158.619    //  one iter time = 1.70621e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 1045278801  //  time = 176.787    //  one iter time = 1.69129e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 764292891  //  time = 131.181    //  one iter time = 1.71637e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 521392818  //  time = 89.5542    //  one iter time = 1.7176e-07            <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 78051181   //  time = 14.1571    //  one iter time = 1.81382e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 82150776   //  time = 14.7448    //  one iter time = 1.79484e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 113449562  //  time = 20.4355    //  one iter time = 1.80129e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 140020406  //  time = 24.44      //  one iter time = 1.74546e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 65316813   //  time = 11.7714    //  one iter time = 1.8022e-07            <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 99690378   //  time = 17.5687    //  one iter time = 1.76233e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 97873916   //  time = 17.3943    //  one iter time = 1.77721e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 100511142  //  time = 17.6135    //  one iter time = 1.75239e-07           <----  return CHECKMATE with one iter E2-E3
+depth = 5/3  //  move index = 149281735  //  time = 25.8631    //  one iter time = 1.7325e-07            <----  return CHECKMATE with one iter E2-E3
