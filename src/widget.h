@@ -39,6 +39,7 @@ private slots:
     void startGameW();
     void startGameB();
 
+    void on_Widget_customContextMenuRequested(const QPoint &pos);
 };
 
 #endif // WIDGET_H

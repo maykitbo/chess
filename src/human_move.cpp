@@ -55,25 +55,3 @@ bool chessboard::findMoves(int8_t color) {
     }
     return false;
 }
-
-// bool startChessboard::moveToCheck(moveYT move) {
-//     botColor = botColor == WHITE ? BLACK : WHITE;
-//     boardBuff buff(*this, move);
-//     for (int8_t k = 0; k < 8; ++k) {
-//         for (int8_t g = 0; g < 8; ++g) {
-//             if (buff.board[g][k] != buff.fake && buff.board[g][k]->getColor() != botColor)
-//                 buff.board[g][k]->Pmove(&buff);
-//         }
-//     }
-//     for (auto i : buff.ret) {
-//         if (i.first > P_KING - 100) {
-//             // cout << i.first << " " << (int)i.second.startX << " " << (int)i.second.startY << " " << (int)i.second.endX << " " << (int)i.second.endY << "\n";
-//             buff.ret.clear();
-//             botColor = botColor == WHITE ? BLACK : WHITE;
-//             return true;
-//         }
-//     }
-//     buff.ret.clear();
-//     botColor = botColor == WHITE ? BLACK : WHITE;
-//     return false;
-// }

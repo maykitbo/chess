@@ -52,7 +52,7 @@ const int8_t kingSquarePrice[8][8] = {{20, 30, 10, 0, 0, 10, 30, 20}, \
 mapPair chessboard::bestMove() {
     if (findMoves()) return mapPair(P_KING, moveYT(0, 0, 0, 0));
     if (ret.size() == 0) return mapPair(STALEMATE, moveYT(0, 0, 0, 0));
-    if (ret.size() == 1) return (*ret.begin());
+//    if (ret.size() == 1) return (*ret.begin());
     if (depth < global::depth) {
         for (mapMove::iterator i = ret.begin(); i != ret.end(); ) {
             if ((*i).first < P_PAWN - 30 && depth > global::small_depth) {
@@ -72,6 +72,7 @@ mapPair chessboard::dearestMapMove() {
     for (auto i = ++ret.begin(); i != ret.end(); ++i) {
         if ((*i).first > (*rex).first) rex = i;
     }
+    rex->first += sumMoves / SUM_MOVES_KOEF;
     return *rex;
 }
 
@@ -85,6 +86,7 @@ bool chessboard::findMoves() {
                 board[g][k]->Pmove(this);
                 for ( ; iter != ret.end(); iter++) {
                     if ((*iter).first > P_KING - 100) return true;
+                    sumMoves += (*iter).first == 0 ? ONE_POSSIBLE_MOVE : (*iter).first;
                 }
             }
         }

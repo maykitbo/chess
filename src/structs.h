@@ -9,7 +9,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "structs.h"
+//#include "structs.h"
 #include <math.h>
 #include <ctime>
 // #include <math.h>
@@ -27,8 +27,8 @@ class enPassantBoard;
 class piece;
 
 struct moveYT {
-    uint8_t startX, startY, endX, endY;
-    moveYT(uint8_t endX, uint8_t endY, uint8_t startX, uint8_t startY) : startX(startX), startY(startY), endX(endX), endY(endY) {}
+    int8_t startX, startY, endX, endY;
+    moveYT(int8_t endX, int8_t endY, int8_t startX, int8_t startY) : startX(startX), startY(startY), endX(endX), endY(endY) {}
     moveYT() : startX(0), startY(0), endX(0), endY(0) {}
 };
 
@@ -47,7 +47,8 @@ class chessboard {
         int8_t botColor;
         mapMove ret;
         int8_t depth = 0;
-        uint moveIndex = 0;
+        unsigned int moveIndex = 0;
+        int sumMoves = 0;
     public:
         class piece {
             private:

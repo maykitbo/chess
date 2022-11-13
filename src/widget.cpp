@@ -5,20 +5,19 @@
 // #include <iostream>
 #include <unistd.h>
 #include <thread>
+#include <QSplitter>
 
 
 
 Widget::Widget(QWidget *parent) : QWidget(parent), ui(new Ui::Widget), oneMove(0, 0, 0, 0), board(0) {
     ui->setupUi(this);
-
     for (int k = 0; k < 8; k++) {
         for (int g = 0; g < 8; g++) {
-            if (ui->gridLayout->itemAtPosition(g, k)) {
-                buttons[k][-g + 7] = dynamic_cast<QPushButton*>(ui->gridLayout->itemAtPosition(g, k)->widget());
+            if (ui->gridLayout_2->itemAtPosition(g, k)) {
+                buttons[k][-g + 7] = dynamic_cast<QPushButton*>(ui->gridLayout_2->itemAtPosition(g, k)->widget());
             }
         }
     }
-
     for (int k = 0; k < 8; k++) {
         for (int g = 0; g < 8; g++) {
             connect(buttons[g][k], SIGNAL(clicked(bool)), this, SLOT(click()));
@@ -26,17 +25,13 @@ Widget::Widget(QWidget *parent) : QWidget(parent), ui(new Ui::Widget), oneMove(0
     }
     connect(ui->white_b, SIGNAL(clicked(bool)), this, SLOT(startGameW()));
     connect(ui->black_b, SIGNAL(clicked(bool)), this, SLOT(startGameB()));
-
-//    if (BOTCOLOR == WHITE) board.botMove<Widget>(&botWait, this);
-    
-//    this->print();
 }
 
 void Widget::startGameW() {
 //    std::cout << "1";
     humanColor = WHITE;
      board.newStart(BLACK, ui->spinBox->value());
-//    colRowPrint();
+    colRowPrint();
     this->print();
 }
 
@@ -52,9 +47,17 @@ void Widget::startGameB() {
 }
 
 void Widget::colRowPrint() {
-    int k = humanColor == WHITE ? 0 : -7;
-    ui->label->setText(QString(k + 1));
-//    ui->label->setText(QString(k + 1));
+    if (humanColor == WHITE) {
+        for (int g = 0; g < 8; g++) {
+            dynamic_cast<QLabel*>(ui->verticalLayout->itemAt(7 - g)->widget())->setText(QString::number(1 + g));
+            dynamic_cast<QLabel*>(ui->horizontalLayout_2->itemAt(g + 1)->widget())->setText(QString(char('A' + g)));
+        }
+    } else {
+        for (int g = 0; g < 8; g++) {
+            dynamic_cast<QLabel*>(ui->verticalLayout->itemAt(7 - g)->widget())->setText(QString::number(8 - g));
+            dynamic_cast<QLabel*>(ui->horizontalLayout_2->itemAt(g + 1)->widget())->setText(QString::number(char(7 + 'A' - g)));
+        }
+    }
 }
 
 void Widget::click() {
@@ -100,7 +103,7 @@ void Widget::print() {
                 } else {
                     buttons[g][k]->setIcon(QIcon());
                 }
-                buttons[g][k]->setIconSize(QSize(65, 65));
+                buttons[g][k]->setIconSize(QSize(55, 55));
             }
         }
    } else {
@@ -111,7 +114,7 @@ void Widget::print() {
                 } else {
                     buttons[7 - g][7 - k]->setIcon(QIcon());
                 }
-                buttons[7 - g][7 - k]->setIconSize(QSize(65, 65));
+                buttons[7 - g][7 - k]->setIconSize(QSize(55, 55));
             }
         }
     }
@@ -134,5 +137,11 @@ void Widget::print() {
 
 Widget::~Widget() {
     delete ui;
+}
+
+
+void Widget::on_Widget_customContextMenuRequested(const QPoint &pos)
+{
+
 }
 

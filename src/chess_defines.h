@@ -21,8 +21,8 @@
 
 #define LOG_NAME "return CHECKMATE with one iter E2-E3"
 
-#define ONE_POSSIBLE_MOVE 5
-// #define ONE_POSSIBLE_MOVE_KILL_KOEF 10
+#define ONE_POSSIBLE_MOVE 60
+#define SUM_MOVES_KOEF 20
 
 #define BLACK -1
 #define WHITE 1
