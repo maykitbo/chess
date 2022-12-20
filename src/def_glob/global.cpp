@@ -1,4 +1,4 @@
-#include "structs.h"
+#include "../model/structs.h"
 
 namespace global {
     int8_t depth = 7;

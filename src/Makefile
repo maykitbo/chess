@@ -1,17 +1,19 @@
 all:
-	cmake CMakeLists.txt
-	make
-	rm Makefile
-	cp makef/Makefile .
-	./chess_wibget
+	cmake -B"build" -H"build"
+	$(MAKE) -C build
+	mv build/chess_wibget app
+	make go
 
 go:
-	./chess_wibget
+	./app/chess_wibget
 
 clean:
-	rm -rf CMakeLists.txt.user
-	rm -rf cmake_install.cmake
-	rm -rf CMakeCache.txt
-	rm -rf chess_wibget_autogen
-	rm -rf CMakeFiles
-	rm -rf chess_wibget
+	rm -rf app/*
+	rm -rf build/CMakeLists.txt.user
+	rm -rf build/cmake_install.cmake
+	rm -rf build/CMakeCache.txt
+	rm -rf build/chess_wibget_autogen
+	rm -rf build/CMakeFiles
+	rm -rf build/chess_wibget
+	rm -rf build/png
+	rm -rf build/Makefile

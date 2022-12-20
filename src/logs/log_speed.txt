@@ -150,3 +150,77 @@ depth = 5/3  //  move index = 99690378   //  time = 17.5687    //  one iter time
 depth = 5/3  //  move index = 97873916   //  time = 17.3943    //  one iter time = 1.77721e-07           <----  return CHECKMATE with one iter E2-E3
 depth = 5/3  //  move index = 100511142  //  time = 17.6135    //  one iter time = 1.75239e-07           <----  return CHECKMATE with one iter E2-E3
 depth = 5/3  //  move index = 149281735  //  time = 25.8631    //  one iter time = 1.7325e-07            <----  return CHECKMATE with one iter E2-E3
+depth = /  //  move index = 649        //  time = 0.000217   //  one iter time = 3.34361e-07           <----  no lists of pieces   . :  .
+Human:   4.1 : 4.2
+depth = 5/2  //  move index = 975175     //  time = 0.347165   //  one iter time = 3.56003e-07           <----  no lists of pieces  4.6 : 4.5
+___________________________
+
+Human:   4:1 - 4:2
+depth = 5/3  //  move index = 16567375   //  time = 4.53504    //  one iter time = 2.73733e-07           <----  no lists of pieces  3:6 - 3:4
+Human:   3:0 - 5:2
+depth = 5/3  //  move index = 73617951   //  time = 17.4868    //  one iter time = 2.37535e-07           <----  no lists of pieces  3:7 - 3:5
+Human:   5:2 - 5:6
+depth = 5/3  //  move index = 16079234   //  time = 3.87856    //  one iter time = 2.41216e-07           <----  no lists of pieces  4:7 - 5:6
+
+Human:   4:1 - 4:2
+depth = 5/3  //  move index = 16567375   //  time = 4.45301    //  one iter time = 2.68782e-07           <----  no lists of pieces  3:6 - 3:4
+Human:   3:0 - 5:2
+depth = 5/3  //  move index = 73617951   //  time = 17.6462    //  one iter time = 2.397e-07             <----  no lists of pieces  3:7 - 3:5
+Human:   5:2 - 5:6
+depth = 5/3  //  move index = 16079234   //  time = 3.94769    //  one iter time = 2.45515e-07           <----  no lists of pieces  4:7 - 5:6
+
+Human:   4:1 - 4:2
+depth = 5/3  //  move index = 16567375   //  time = 4.61059    //  one iter time = 2.78293e-07           <----  no lists of pieces  3:6 - 3:4
+Human:   3:0 - 5:2
+depth = 5/3  //  move index = 73617951   //  time = 17.3391    //  one iter time = 2.35528e-07           <----  no lists of pieces  3:7 - 3:5
+Human:   5:2 - 5:6
+depth = 5/3  //  move index = 16079234   //  time = 3.88502    //  one iter time = 2.41617e-07           <----  no lists of pieces  4:7 - 5:6
+
+Human:   4:1 - 4:2
+depth = 5/3  //  move index = 16567375   //  time = 4.55748    //  one iter time = 2.75087e-07           <----  no lists of pieces  3:6 - 3:4
+Human:   3:0 - 5:2
+depth = 5/3  //  move index = 73617951   //  time = 17.5379    //  one iter time = 2.38229e-07           <----  no lists of pieces  3:7 - 3:5
+Human:   5:2 - 5:6
+depth = 5/3  //  move index = 16079234   //  time = 3.91795    //  one iter time = 2.43665e-07           <----  no lists of pieces  4:7 - 5:6
+
+Human:   4:1 - 4:2
+depth = 5/3  //  move index = 16567375   //  time = 4.51407    //  one iter time = 2.72467e-07           <----  no lists of pieces  3:6 - 3:4
+Human:   3:0 - 5:2
+depth = 5/3  //  move index = 73617951   //  time = 17.6215    //  one iter time = 2.39364e-07           <----  no lists of pieces  3:7 - 3:5
+Human:   5:2 - 5:6
+depth = 5/3  //  move index = 16079234   //  time = 3.87038    //  one iter time = 2.40707e-07           <----  no lists of pieces  4:7 - 5:6
+
+Human:   4:1 - 4:2
+depth = 4/2  //  move index = 639783     //  time = 0.271225   //  one iter time = 4.23933e-07           <----  no lists of pieces  4:6 - 4:5
+Human:   3:0 - 5:2
+depth = 4/2  //  move index = 4081022    //  time = 1.26649    //  one iter time = 3.10336e-07           <----  no lists of pieces  3:7 - 7:3
+Human:   5:2 - 5:6
+depth = 4/2  //  move index = 332105     //  time = 0.162948   //  one iter time = 4.90652e-07           <----  no lists of pieces  4:7 - 5:6
+
+Human:   4:1 - 4:2
+depth = 4/2  //  move index = 639783     //  time = 0.266316   //  one iter time = 4.1626e-07            <----  no lists of pieces  4:6 - 4:5
+Human:   3:0 - 5:2
+depth = 4/2  //  move index = 4081022    //  time = 1.23306    //  one iter time = 3.02145e-07           <----  no lists of pieces  3:7 - 7:3
+Human:   5:2 - 5:6
+depth = 4/2  //  move index = 332105     //  time = 0.159537   //  one iter time = 4.80381e-07           <----  no lists of pieces  4:7 - 5:6
+
+Human:   4:1 - 4:2
+depth = 4/2  //  move index = 639783     //  time = 0.302124   //  one iter time = 4.72229e-07           <----  no lists of pieces  4:6 - 4:5
+Human:   3:0 - 5:2
+depth = 4/2  //  move index = 4081022    //  time = 1.25419    //  one iter time = 3.07323e-07           <----  no lists of pieces  3:7 - 7:3
+Human:   5:2 - 5:6
+depth = 4/2  //  move index = 332105     //  time = 0.160765   //  one iter time = 4.84079e-07           <----  no lists of pieces  4:7 - 5:6
+
+Human:   4:1 - 4:2
+depth = 4/2  //  move index = 639783     //  time = 0.272956   //  one iter time = 4.26638e-07           <----  no lists of pieces  4:6 - 4:5
+Human:   3:0 - 5:2
+depth = 4/2  //  move index = 4081022    //  time = 1.24059    //  one iter time = 3.03991e-07           <----  no lists of pieces  3:7 - 7:3
+Human:   5:2 - 5:6
+depth = 4/2  //  move index = 332105     //  time = 0.159608   //  one iter time = 4.80595e-07           <----  no lists of pieces  4:7 - 5:6
+
+Human:   4:1 - 4:2
+depth = 4/2  //  move index = 639783     //  time = 0.29543    //  one iter time = 4.61766e-07           <----  no lists of pieces  4:6 - 4:5
+Human:   3:0 - 5:2
+depth = 4/2  //  move index = 4081022    //  time = 1.27207    //  one iter time = 3.11703e-07           <----  no lists of pieces  3:7 - 7:3
+Human:   5:2 - 5:6
+depth = 4/2  //  move index = 332105     //  time = 0.17826    //  one iter time = 5.36758e-07           <----  no lists of pieces  4:7 - 5:6

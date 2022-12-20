@@ -52,16 +52,39 @@ const int8_t kingSquarePrice[8][8] = {{20, 30, 10, 0, 0, 10, 30, 20}, \
 mapPair chessboard::bestMove() {
     if (findMoves()) return mapPair(P_KING, moveYT(0, 0, 0, 0));
     if (ret.size() == 0) return mapPair(STALEMATE, moveYT(0, 0, 0, 0));
-//    if (ret.size() == 1) return (*ret.begin());
+    if (ret.size() == 1 && depth < global::depth - 1) depth = global::depth - 1;
+
     if (depth < global::depth) {
         for (mapMove::iterator i = ret.begin(); i != ret.end(); ) {
-            if ((*i).first < P_PAWN - 30 && depth > global::small_depth) {
+            if ((*i).first < P_PAWN - 10 && depth > global::small_depth) {
                 ++i;
                 continue;
             }
             i = createBuffBoard(i);
         }
     }
+
+    // if (depth <= global::small_depth) {
+    //     for (mapMove::iterator i = ret.begin(); i != ret.end(); ) {
+    //         i = createBuffBoard(i);
+    //     }
+    // } else if (depth <= global::small_depth + 2 && sumMoves > 3000) {
+    //     for (mapMove::iterator i = ret.begin(); i != ret.end(); ) {
+    //         i = createBuffBoard(i);
+    //     }
+    // } else if (depth < global::depth) {
+    //     for (mapMove::iterator i = ret.begin(); i != ret.end(); ) {
+    //         if ((*i).first >= P_PAWN - 10) i = createBuffBoard(i);
+    //         else ++i;
+    //     }
+    // }
+
+    // if ((depth + 3) * 500 < sumMoves) {
+    //     for (mapMove::iterator i = ret.begin(); i != ret.end(); ) {
+    //         i = createBuffBoard(i);
+    //     }
+    // }
+
     if (ret.size() == 1) return (*ret.begin());
     if (ret.size() == 0) return mapPair(CHECKMATE, moveYT(0, 0, 0, 0));
     return dearestMapMove();
@@ -72,26 +95,24 @@ mapPair chessboard::dearestMapMove() {
     for (auto i = ++ret.begin(); i != ret.end(); ++i) {
         if ((*i).first > (*rex).first) rex = i;
     }
-    rex->first += sumMoves / SUM_MOVES_KOEF;
+    rex->first += sumMoves / SUM_MOVES_KOEF;                    //// moves sum
+    // cout << sumMoves << "\n";
+    if (depth == global::depth) rex->first /= 2;                //// last move
     return *rex;
 }
 
 bool chessboard::findMoves() {
     auto iter = ret.begin();
-    for (uint8_t k = 0; k < 8; ++k) {
-        for (uint8_t g = 0; g < 8; ++g) {
-            if (board[g][k] != fake && board[g][k]->getColor() == botColor) {
-                // try { board[g][k]->Pmove(this); }
-                // catch(...) { return mapPair(P_KING, moveYT(0, 0, 0, 0)); }
-                board[g][k]->Pmove(this);
-                for ( ; iter != ret.end(); iter++) {
-                    if ((*iter).first > P_KING - 100) return true;
-                    sumMoves += (*iter).first == 0 ? ONE_POSSIBLE_MOVE : (*iter).first;
-                }
-            }
+    return botCycle([&](int8_t g, int8_t k) {
+        board[g][k]->Pmove(this);
+        while (++iter != ret.end()) {
+            if ((*iter).first > P_KING - 100) return true;
+            (*iter).first += squarePrice((*iter).second) / 2;    //// square price
+            sumMoves += (*iter).first;                           //// moves sum
         }
-    }
-    return false;
+        --iter;
+        return false;
+    });
 }
 
 mapMove::iterator chessboard::createBuffBoard(mapMove::iterator i) {
@@ -105,17 +126,17 @@ mapMove::iterator chessboard::createBuffBoard(mapMove::iterator i) {
     }
 }
 
-int8_t chessboard::squarePrice(int8_t startX, int8_t startY, int8_t endX, int8_t endY) const {
+int8_t chessboard::squarePrice(moveYT one) const {
     int8_t kof = (botColor == WHITE ? 1 : (-1));
     int8_t pl = (botColor == WHITE ? 0 : (7));
-    if (endX == CASTLING) {
-        return squerePriceSwitch(startX == 0 ? 3 : 5, pl + startY * kof, ROOK) +\
-                squerePriceSwitch(startX == 0 ? 2 : 6, pl + startY * kof, KING) -\
-                squerePriceSwitch(startX, pl + startY * kof, ROOK) -\
-                squerePriceSwitch(4, pl + startY * kof, KING);
+    if (one.endX == CASTLING) {
+        return squerePriceSwitch(one.startX == 0 ? 3 : 5, pl + one.startY * kof, ROOK) +\
+                squerePriceSwitch(one.startX == 0 ? 2 : 6, pl + one.startY * kof, KING) -\
+                squerePriceSwitch(one.startX, pl + one.startY * kof, ROOK) -\
+                squerePriceSwitch(4, pl + one.startY * kof, KING);
     }
-    return squerePriceSwitch(endX, pl + endY * kof, board[startX][startY]->getName()) -\
-            squerePriceSwitch(startX, pl + startY * kof, board[startX][startY]->getName());
+    return squerePriceSwitch(one.endX, pl + one.endY * kof, board[one.startX][one.startY]->getName()) -\
+            squerePriceSwitch(one.startX, pl + one.startY * kof, board[one.startX][one.startY]->getName());
 }
 
 int8_t chessboard::squerePriceSwitch(int8_t x, int8_t y, int8_t name) const {

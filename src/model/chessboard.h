@@ -40,34 +40,39 @@ class startChessboard : public chessboard {
         piece bishop57 = piece(BISHOP, 5, 7, BLACK);
         piece knight67 = piece(KNIGHT, 6, 7, BLACK);
         piece rook77 = piece(ROOK, 7, 7, BLACK);
-        void piecesArrey();
+        void newPassPawnBoard(bool color, int level);
         void globalDepth(int level);
         void oneMove(moveYT one);
         bool castlingMove(moveYT one);
         void enPassantMove(int8_t startX, int8_t startY, int8_t endX, int8_t endY);
         void passPawnMove(moveYT one, int8_t passedPawnName);
-        void oneColorOffCastling(int8_t color);
+        void oneColorOffCastling(bool color);
         template<class T>
         bool moveToCheck(moveYT move) {
-            // botColor = botColor == WHITE ? BLACK : WHITE;
+            botColor = !botColor;
             T buff(*this, move);
-            bool R = buff.findMoves(botColor == WHITE ? BLACK : WHITE);
+            botColor = !botColor;
+            bool R = buff.findMoves(botColor);
             buff.ret.clear();
-            // botColor = botColor == WHITE ? BLACK : WHITE;
             return R;
         }
-        void log_speed(double sec);
-        void castlingOffCheck(int8_t color);
+        void log_speed(double sec, moveYT move);
+        void human_log(moveYT move);
+        void castlingOffCheck(bool color);
+
+        // listPiece whiteList;
+        // listPiece blackList;
+
     public:
-        startChessboard(int8_t botColor);
+        startChessboard(bool botColor);
         startChessboard() : startChessboard(WHITE) {}
         int8_t humanMove(moveYT hm, int8_t passedPawnName);
-        void newStart(int8_t color, int level);
+        void newStart(bool color, int level);
         template<class T>
         void botMove(bool *botWait, T *widget) {
             ret.clear();
-            // botColor = botColor == WHITE ? BLACK : WHITE;
             *botWait = 0;
+            sumMoves = 0;
             moveIndex = 0;
             time_t time = clock();
             castlingOffCheck(botColor);
@@ -78,7 +83,7 @@ class startChessboard : public chessboard {
             }
             oneMove(result.second);
             double sec = double(clock() - time) / CLOCKS_PER_SEC;
-            // log_speed(sec);                                                                          //// LOG
+            if (LOGGG) log_speed(sec, result.second);                                                                          //// LOG
             *botWait = 1;
             widget->print();
             // botMove<T>(botWait, widget);
@@ -99,12 +104,10 @@ class boardBuff : public chessboard {
         boardBuff(T &other, moveYT move) : chessboard(other) {
             add = piece((other.board[move.startX][move.startY]->getName() == PAWN && (move.endY == 0 || move.endY == 7)) ?\
                         QUEEN : other.board[move.startX][move.startY]->getName(), move.endX, move.endY, other.botColor);
-            for (int8_t k = 0; k < 8; ++k) {
-                for (int8_t g = 0; g < 8; ++g) {
-                    if (g != move.startX || k != move.startY) board[g][k] = other.board[g][k];
-                    else board[g][k] = fake;
-                }
-            }
+            cycleBase([&](int8_t g, int8_t k) {
+                if (g != move.startX || k != move.startY) board[g][k] = other.board[g][k];
+                else board[g][k] = fake;
+            });
             board[move.endX][move.endY] = &add;
             if (add.getName() == PAWN && (move.endY - move.startY == 2 || move.endY - move.startY == -2)) {
                 enPassantX = add.getX();
@@ -121,12 +124,10 @@ class boarBuffCastling : public boardBuff {
         boarBuffCastling(T &other, moveYT move) : boardBuff(other) {
             addKing = piece(KING, move.startX == 0 ? 2 : 6, move.startY, other.botColor);
             add = piece(ROOK, move.startX == 0 ? 3 : 5, move.startY, other.botColor);
-            for (int8_t k = 0; k < 8; ++k) {
-                for (int8_t g = 0; g < 8; ++g) {
-                    if (!(g == move.startX && k == move.startY) && !(g == 4 && k == move.startY)) board[g][k] = other.board[g][k];
-                    else board[g][k] = fake;
-                }
-            }
+            cycleBase([&](int8_t g, int8_t k) {
+                if (!(g == move.startX && k == move.startY) && !(g == 4 && k == move.startY)) board[g][k] = other.board[g][k];
+                else board[g][k] = fake;
+            });
             board[addKing.getX()][addKing.getY()] = &addKing;
             board[add.getX()][add.getY()] = &add;
         }
@@ -139,14 +140,12 @@ class enPassantBoard : public boardBuff {
         template<class T>
         enPassantBoard(T &other, moveYT move) : boardBuff(other) {
             add = piece(PAWN, other.enPassantX, move.endY, other.botColor);
-            for (int8_t k = 0; k < 8; ++k) {
-                for (int8_t g = 0; g < 8; ++g) {
-                    if (!(g == move.startX && k == move.startY) && !(g == other.enPassantX && k == (botColor == WHITE ? 3 : 4)))
-                        board[g][k] = other.board[g][k];
-                    else
-                        board[g][k] = fake;
-                }
-            }
+            cycleBase([&](int8_t g, int8_t k) {
+                if (!(g == move.startX && k == move.startY) && !(g == other.enPassantX && k == (botColor == WHITE ? 3 : 4)))
+                    board[g][k] = other.board[g][k];
+                else
+                    board[g][k] = fake;
+            });
             board[other.enPassantX][move.endY] = &add;
         }
 };

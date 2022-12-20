@@ -1,9 +1,10 @@
 #include "chessboard.h"
 
 int8_t startChessboard::humanMove(moveYT hm, int8_t passedPawnName) {  // return 0 - move impossible; return 1 - move done; return 2 - need passed pawn name
-    castlingOffCheck(botColor == WHITE ? BLACK : WHITE);
-    int8_t R = 0;
     ret.clear();
+    // castlingOffCheck(botColor == WHITE ? BLACK : WHITE);
+    castlingOffCheck(!botColor);
+    int8_t R = 0;
     board[hm.startX][hm.startY]->Pmove(this);
     for (auto i = ret.begin(); i != ret.end(); i++) {
         if (i->second.endX == hm.endX && i->second.endY == hm.endY) {
@@ -25,33 +26,38 @@ int8_t startChessboard::humanMove(moveYT hm, int8_t passedPawnName) {  // return
         } else if (i->second.endX == ENPASSANT && hm.endX == enPassantX && hm.endY == i->second.endY) {
             if (moveToCheck<enPassantBoard>(hm)) return R;                                           //// return move to check
             enPassantMove(hm.startX, hm.startY, enPassantX, hm.endY);
+            R = 1;
+            break;
         }
     }
+    if (R && LOGGG) human_log(hm);
     // if (ret.size() == 0) {
     //     if (checkBool) return CHECKMATE;
     //     return STALEMATE;
     // }
-    ret.clear();
+    // ret.clear();
     return R;
 }
 
-void startChessboard::castlingOffCheck(int8_t color) {
-    if (findMoves(color)) oneColorOffCastling(color);
+void startChessboard::castlingOffCheck(bool color) {
+    // if (findMoves(color == WHITE ? BLACK : WHITE)) {
+    if (findMoves(!color)) {
+        oneColorOffCastling(color);
+    }
+    ret.clear();
 }
 
-bool chessboard::findMoves(int8_t color) {
+bool chessboard::findMoves(bool color) {
     auto iter = ret.begin();
-    for (uint8_t k = 0; k < 8; ++k) {
-        for (uint8_t g = 0; g < 8; ++g) {
-            if (board[g][k] != fake && board[g][k]->getColor() == color) {
-                // try { board[g][k]->Pmove(this); }
-                // catch(...) { return mapPair(P_KING, moveYT(0, 0, 0, 0)); }
-                board[g][k]->Pmove(this);
-                for ( ; iter != ret.end(); iter++) {
-                    if ((*iter).first > P_KING - 100) return true;
-                }
+    return cycleBool([&](int8_t g, int8_t k) {
+        if (board[g][k] != fake && board[g][k]->getColor() == color) {
+            board[g][k]->Pmove(this);
+            while (++iter != ret.end()) {
+                if ((*iter).first > P_KING - 100) return true;
             }
+            --iter;         
         }
-    }
-    return false;
+        return false;
+    });
+    // return false;
 }

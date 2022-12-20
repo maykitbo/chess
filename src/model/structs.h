@@ -1,7 +1,7 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
-#include "chess_defines.h"
+#include "../def_glob/chess_defines.h"
 
 #include <vector>
 #include <map>
@@ -44,7 +44,7 @@ class chessboard {
     protected:
         bool castling00, castling07, castling70, castling77;
         int8_t enPassantX;
-        int8_t botColor;
+        bool botColor;
         mapMove ret;
         int8_t depth = 0;
         unsigned int moveIndex = 0;
@@ -55,6 +55,7 @@ class chessboard {
                 chessboard *Qch;
                 int8_t name, xLit, yNum, color;
                 int16_t price;
+                // listPiece::iterator iterP;
                 void pawnMove();
                 void bishopMove();
                 void knightMove();
@@ -67,41 +68,50 @@ class chessboard {
                 bool castling(int8_t x, int8_t y);
             public:
                 piece() : name(0), xLit(0), yNum(0), color(0), Qch(nullptr) {}
-                piece(int8_t name_, int8_t x, int8_t y, int8_t color_);
-                void dropp(int8_t x, int8_t y);
-                void dropp(int8_t name_, int8_t x, int8_t y);
+                piece(int8_t name_, int8_t x, int8_t y, bool color_);
+                piece *dropp(int8_t x, int8_t y);
+                piece *dropp(int8_t name_, int8_t x, int8_t y);
                 void Pmove(chessboard *owner);
                 int8_t getName() const { return name; }
                 int8_t &setName() { return name; }
-                int8_t getColor() const { return color; }
+                bool getColor() const { return color == P_WHITE ? WHITE : BLACK; }
                 int8_t getX() const { return xLit; }
                 int8_t getY() const { return yNum; }
                 int8_t &setX() {return xLit; }
                 int8_t &setY() {return yNum; }
                 int16_t getPrice() const { return price; }
+                // void eraseP(listPiece *listPoint) {
+                //     if (color == BLACK) listPoint++;
+                //     (*listPoint).erase(iterP);
+                // }
+                // void pusListsP(listPiece *listPoint) {
+                //     if (color == BLACK) listPoint++;
+                //     (*listPoint).push_front(this);
+                //     iterP = (*listPoint).begin();
+                // }
         };
     protected:
         piece *board[8][8];
         piece *fake = nullptr;
     public:
         chessboard() = default;
-        chessboard(int8_t botClr) : botColor(botClr), castling00(true), castling07(true), castling70(true), castling77(true), enPassantX(-1) {}
-        chessboard(chessboard &other) : botColor(other.botColor == WHITE ? BLACK : WHITE), castling00(other.castling00), \
+        chessboard(bool botClr) : botColor(botClr), castling00(true), castling07(true), castling70(true), castling77(true), enPassantX(-1) {}
+        chessboard(chessboard &other) : botColor(!other.botColor), castling00(other.castling00), \
             castling07(other.castling07), castling70(other.castling70), castling77(other.castling77), depth(other.depth + 1), enPassantX(-1) {}
         piece *operator()(int8_t x, int8_t y) const { return board[x][y]; }
         piece *vacant() const { return fake; }
-        int8_t squarePrice(int8_t startX, int8_t startY, int8_t endX, int8_t endY) const;
+        int8_t squarePrice(moveYT one) const;
         int8_t squerePriceSwitch(int8_t x, int8_t y, int8_t name) const;
         mapPair bestMove();
         bool findMoves();
-        bool findMoves(int8_t color);
+        bool findMoves(bool color);
         mapPair dearestMapMove();
         mapMove::iterator createBuffBoard(mapMove::iterator i);
         template<class T>
         mapMove::iterator recurs(mapMove::iterator i) {
             T buff(*this, (*i).second);
             int16_t movePrice = (buff.bestMove()).first;
-            if (movePrice > P_KING - 100) {
+            if (movePrice == P_KING) {
                 moveIndex += buff.moveIndex;
                 return ret.erase(i);
             } else {
@@ -109,6 +119,40 @@ class chessboard {
                 moveIndex += buff.moveIndex;
                 return ++i;
             }
+        }
+        template<class T>
+        void cycleBase(const T &functr) {
+            for (int8_t k = 0; k < 8; ++k) {
+                for (int8_t g = 0; g < 8; ++g) {
+                    functr(g, k);
+                }
+            }
+        }
+        template<class T>
+        void cycleStart(const T &functr) {
+            for (int8_t k = 2; k < 6; ++k) {
+                for (int8_t g = 0; g < 8; ++g) {
+                    functr(g, k);
+                }
+            }
+        }
+        template<class T>
+        bool cycleBool(const T &functr) {
+            for (int8_t k = 0; k < 8; ++k) {
+                for (int8_t g = 0; g < 8; ++g) {
+                    if (functr(g, k)) return true;
+                }
+            }
+            return false;
+        }
+        template<class T>
+        bool botCycle(const T &functr) {
+            return cycleBool([&](int8_t g, int8_t k) {
+                if (board[g][k] != fake && board[g][k]->getColor() == botColor) {
+                    return functr(g, k);
+                }
+                return false;
+            });
         }
 };
 

@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
-#include "chessboard.h"
+#include "../model/chessboard.h"
 
 //#define BOTCOLOR BLACK
 // #define HUMANCOLOR WHITE
@@ -31,7 +31,7 @@ private:
     moveYT oneMove;
     bool moveCan = false;
     bool botWait = true;
-    int8_t humanColor = 0;
+    bool humanColor;
     QPushButton *buttons[8][8];
 
 private slots:

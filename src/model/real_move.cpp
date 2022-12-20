@@ -25,7 +25,7 @@ void startChessboard::enPassantMove(int8_t startX, int8_t startY, int8_t endX, i
     board[startX][startY] = fake;
 }
 
-void startChessboard::oneColorOffCastling(int8_t color) {
+void startChessboard::oneColorOffCastling(bool color) {
     switch (color) {
         case WHITE:
             castling00 = false;
@@ -40,12 +40,12 @@ void startChessboard::oneColorOffCastling(int8_t color) {
 
 bool startChessboard::castlingMove(moveYT one) {
     if (board[one.startX][one.startY]->getName() == KING) {
-        oneColorOffCastling(botColor);
+        oneColorOffCastling(board[one.startX][one.startY]->getColor());
         return false;
     }
     if (board[one.startX][one.startY]->getName() == ROOK) {
         if (one.endX == CASTLING) {
-            oneColorOffCastling(botColor);
+            oneColorOffCastling(board[one.startX][one.startY]->getColor());
             board[one.startX][one.startY]->setX() = one.startX == 0 ? 3 : 5;
             board[4][one.startY]->setX() = one.startX == 0 ? 2 : 6;
             board[one.startX == 0 ? 3 : 5][one.startY] = board[one.startX][one.startY];
@@ -63,7 +63,7 @@ bool startChessboard::castlingMove(moveYT one) {
 }
 
 void startChessboard::passPawnMove(moveYT one, int8_t passedPawnName) {
-    board[one.endX][one.endY] == board[one.startX][one.startY];
+    board[one.endX][one.endY] = board[one.startX][one.startY];
     board[one.endX][one.endY]->setName() = passedPawnName;
     board[one.endX][one.endY]->setX() = one.endX;
     board[one.endX][one.endY]->setY() = one.endY;

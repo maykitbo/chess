@@ -7,6 +7,8 @@
 // int8_t DEPTH = 5;
 // int8_t SMALL_DEPTH = 2;
 
+#define LOGGG true             // on off logs
+
 #define CASTLING 10
 #define ENPASSANT 11
 
@@ -19,13 +21,16 @@
 #define G_ 6
 #define H_ 7
 
-#define LOG_NAME "return CHECKMATE with one iter E2-E3"
+#define LOG_NAME "no lists of pieces"
 
 #define ONE_POSSIBLE_MOVE 60
 #define SUM_MOVES_KOEF 20
 
-#define BLACK -1
-#define WHITE 1
+#define BLACK false
+#define WHITE true
+
+#define P_WHITE 1
+#define P_BLACK -1
 
 #define PAWN 1
 #define BISHOP 2

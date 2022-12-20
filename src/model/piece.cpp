@@ -22,18 +22,20 @@ const int16_t Price(int8_t name) {
     return 0;
 }
 
-chessboard::piece::piece(int8_t name_, int8_t x, int8_t y, int8_t color_) : name(name_), xLit(x), yNum(y), color(color_) {
+chessboard::piece::piece(int8_t name_, int8_t x, int8_t y, bool color_) : name(name_), xLit(x), yNum(y) {
     price = Price(name);
+    color = color_ == true ? P_WHITE : P_BLACK;
 }
 
-void chessboard::piece::dropp(int8_t x, int8_t y) {
+chessboard::piece *chessboard::piece::dropp(int8_t x, int8_t y) {
     xLit = x;
     yNum = y;
+    return this;
 }
 
-void chessboard::piece::dropp(int8_t name_, int8_t x, int8_t y) {
+chessboard::piece *chessboard::piece::dropp(int8_t name_, int8_t x, int8_t y) {
     name = name_;
-    dropp(x, y);
+    return dropp(x, y);
 }
 
 void chessboard::piece::Pmove(chessboard *owner) {
@@ -56,33 +58,24 @@ void chessboard::piece::Pmove(chessboard *owner) {
 
 void chessboard::piece::pawnMove() {
     int16_t value = checkSquare(xLit, yNum + (1 * color));
-    if (value == 0) {
-        if (yNum == (color == WHITE ? 6 : 1)) {
-            value += P_QUEEN - P_PAWN;                 //// passed pawn
-        }
-        coolInsert(xLit, yNum + (1 * color), value);
+    if (value == ONE_POSSIBLE_MOVE) {
+        coolInsert(xLit, yNum + (1 * color), (yNum == (color == P_WHITE ? 6 : 1) ? value + P_QUEEN - P_PAWN : value));  // passed pawn
         value = checkSquare(xLit, yNum + (2 * color));
-        if (yNum == (color == WHITE ? 1 : 6) && (value == 0)) {
+        if (yNum == (color == P_WHITE ? 1 : 6) && (value == ONE_POSSIBLE_MOVE)) {
             coolInsert(xLit, yNum + (2 * color), value);
         }
     }
-    if (Qch->enPassantX != -1 && yNum == (color == WHITE ? 4 : 3) &&\
+    if (Qch->enPassantX != -1 && yNum == (color == P_WHITE ? 4 : 3) &&\
         (xLit == Qch->enPassantX - 1 || xLit == Qch->enPassantX + 1)) {
-        coolInsert(ENPASSANT, color == WHITE ? 5 : 2, P_PAWN);
+        coolInsert(ENPASSANT, color == P_WHITE ? 5 : 2, P_PAWN);
     }
     value = checkSquare(xLit + 1, yNum + (1 * color));
-    if (value > 0) {
-        if (yNum == (color == WHITE ? 6 : 1)) {
-            value += P_QUEEN - P_PAWN;                 //// passed pawn
-        }
-        coolInsert(xLit + 1, yNum + (1 * color), value);
+    if (value > ONE_POSSIBLE_MOVE) {
+        coolInsert(xLit + 1, yNum + (1 * color), (yNum == (color == P_WHITE ? 6 : 1) ? value + P_QUEEN - P_PAWN : value));
     }
     value = checkSquare(xLit - 1, yNum + (1 * color));
-    if (value > 0) {
-        if (yNum == (color == WHITE ? 6 : 1)) {
-            value += P_QUEEN - P_PAWN;                //// passed pawn
-        }
-        coolInsert(xLit - 1, yNum + (1 * color), value);
+    if (value > ONE_POSSIBLE_MOVE) {
+        coolInsert(xLit - 1, yNum + (1 * color), (yNum == (color == P_WHITE ? 6 : 1) ? value + P_QUEEN - P_PAWN : value));
     }
 }
 
@@ -92,7 +85,7 @@ void chessboard::piece::bishopRook(int8_t Xznak, int8_t Yznak) {
     while (value > -1) {
         coolInsert(xLit + (k * Xznak), yNum + (k * Yznak), value);
         k++;
-        if (value > 0) break;
+        if (value > ONE_POSSIBLE_MOVE) break;
         value = checkSquare(xLit + (k * Xznak), yNum + (k * Yznak));
     }
 }
@@ -148,12 +141,11 @@ int16_t chessboard::piece::checkSquare(int8_t x, int8_t y) {  // проверк�
         return -2;
     }
     if ((*Qch)(x, y) == Qch->vacant()) {
-        return 0;
+        return ONE_POSSIBLE_MOVE;
     }
     if ((*Qch)(x, y)->color == color) {
         return -1;
     }
-    // if ((*Qch)(x, y)->price == P_KING) throw (true);
     return (*Qch)(x, y)->price;
 }
 
@@ -166,7 +158,7 @@ bool chessboard::piece::castling(int8_t x, int8_t y) {
 }
 
 void chessboard::piece::coolInsert(int8_t x, int8_t y, int16_t value) {
-    value += Qch->squarePrice(xLit, yNum, x, y) / 2;
+    // value += Qch->squarePrice(xLit, yNum, x, y) / 2;
     Qch->ret.push_back(mapPair(value, moveYT(x, y, xLit, yNum)));
     Qch->moveIndex++;
 }
